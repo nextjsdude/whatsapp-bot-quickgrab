@@ -30,3 +30,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+    - name: Change Directory
+      run: cd /home/alvieri/actions-runner2/_work/whatsapp-bot-quickgrab/whatsapp-bot-quickgrab
+    - run: pm2 restart 0
