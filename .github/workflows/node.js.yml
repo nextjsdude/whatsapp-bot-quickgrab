@@ -1,0 +1,32 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [20.11.1]
+    env: 
+      VERIFY_TOKEN: ${{secrets.VERIFY_TOKEN}},
+      VF_VERSION_ID: ${{secrets.VF_VERSION_ID}},
+      VF_DM_URL: ${{secrets.VF_DM_URL}},
+      VF_TRANSCRIPT_ICON: ${{secrets.VF_TRANSCRIPT_ICON}},
+      PORT: ${{secrets.PORT}},
+      VF_PROJECT_ID: ${{secrets.VF_PROJECT_ID}}, 
+      VF_API_KEY: ${{secrets.VF_API_KEY}},
+      WHATSAPP_TOKEN: ${{secrets.WHATSAPP_TOKEN}},
+      WHATSAPP_VERSION: ${{secrets.WHATSAPP_VERSION}} 
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
