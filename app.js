@@ -1,15 +1,15 @@
 'use strict'
 require('dotenv').config()
-const WHATSAPP_VERSION = process.env.WHATSAPP_VERSION || 'v17.0'
-const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN
+const WHATSAPP_VERSION = "v20.0" || 'v17.0'
+const WHATSAPP_TOKEN = "EABz8sqr50EwBO3DZBwT4C96ia2ZBJGlc2ZA5GFlePZCA9EjKDI1yx1rMJttpUeeQOvnMCrACVaVgJ6G7AnCuhFVTdG9KpLtODynHAVENP1hYtTUALiOh34Md8vhrtcPOKULPdNclXKjY4eAgGjR04rHIwkojddTVmsRlcVVYIxqI4UnEaZCobaCBt7wpKmjKipgZDZD"
 
-const VF_API_KEY = process.env.VF_API_KEY
-const VF_VERSION_ID = process.env.VF_VERSION_ID || 'development'
-const VF_PROJECT_ID = process.env.VF_PROJECT_ID || null
+const VF_API_KEY = "VF.DM.66c9f8f3a17c0d30b0777eb7.BdetEP0Pi7NCUWBl"
+const VF_VERSION_ID = process.env.VF_VERSION_ID || 'production'
+const VF_PROJECT_ID = "66c96e4837913e088c186844"
 
 const fs = require('fs')
 
-const PICOVOICE_API_KEY = process.env.PICOVOICE_API_KEY || null
+const PICOVOICE_API_KEY = ""
 
 const {
   Leopard,
@@ -24,7 +24,7 @@ const VF_TRANSCRIPT_ICON =
   'https://s3.amazonaws.com/com.voiceflow.studio/share/200x200/200x200.png'
 
 const VF_DM_URL =
-  process.env.VF_DM_URL || 'https://general-runtime.voiceflow.com'
+  "https://general-runtime.voiceflow.com" || 'https://general-runtime.voiceflow.com'
 
 const DMconfig = {
   tts: false,
@@ -189,7 +189,7 @@ app.get('/webhook', (req, res) => {
   if (mode && token) {
     // Check the mode and token sent are correct
     if (
-      (mode === 'subscribe' && token === process.env.VERIFY_TOKEN) ||
+      (mode === 'subscribe' && token === "voiceflow") ||
       'voiceflow'
     ) {
       // Respond with 200 OK and challenge token from the request
@@ -565,7 +565,7 @@ async function saveTranscript(username) {
         },
       },
       headers: {
-        Authorization: process.env.VF_API_KEY,
+        Authorization: "VF.DM.66c9f8f3a17c0d30b0777eb7.BdetEP0Pi7NCUWBl",
       },
     })
       .then(function (response) {
